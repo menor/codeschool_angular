@@ -28,9 +28,34 @@
       <p>None yet</p>
     </div>
     <div class="panel" ng-show="panel.isSelected(3)">
-      <h4>Reviews</h4>
-      <p>None yet</p>
-    </div>
+      <ul>
+        <h4>Reviews</h4>
+        <li ng-repeat="review in product.reviews">
+          <blockquote>
+            <strong ng-model="review.stars"> Stars</strong>
+            <cite class="clearfix">—</cite>
+          </blockquote>
+        </li>
+      </ul>
+
+      <form name="reviewForm">
+        <blockquote>
+          <b>Stars: {{ review.stars }}</b>
+          {{ review.body }}
+          <cite>by: {{ review.author }}</cite>
+        </blockquote>
+
+        <select ng-model="review.stars">
+          <option value="1">1 star</option>
+          <option value="2">2 stars</option>
+        </select>
+        <textarea ng-model="review.body"></textarea>
+        <label>by:</label>
+        <input ng-model="review.author" type="email">
+        <input type="submit" value="submit">
+      </form>
+
+  </div>
   </section>
 
   <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
